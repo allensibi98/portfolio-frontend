@@ -16,7 +16,8 @@ const PortfolioTable = () => {
 
     useEffect(() => {
         console.log('[FRONTEND] Attempting to connect to WebSocket...');
-        const ws = new WebSocket('ws://localhost:8080');
+        const wss = process.env.BACKEND_URL || "ws://localhost:8080";
+        const ws = new WebSocket(wss);
 
         ws.onopen = () => {
             console.log('[FRONTEND] WebSocket connected');
